@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 *sublime*
+/public/system/movies*
