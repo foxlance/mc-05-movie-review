@@ -20,6 +20,14 @@ class MoviesController < ApplicationController
     end
   end
 
+  def search
+    if params[:search].present?
+      @movies = Movie.search(params[:search])
+    else
+      @movies = Movie.all
+    end
+  end
+
   # GET /movies/new
   def new
     @movie = current_user.movies.build
