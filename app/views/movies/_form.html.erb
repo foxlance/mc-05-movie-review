@@ -1,0 +1,29 @@
+<%= form_for @movie do |f| %>
+	<p>
+		<%= f.label :image %><br>
+		<%= f.file_field :image, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field :title, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.label :description %><br>
+		<%= f.text_area :description, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.label :movie_length %><br>
+		<%= f.text_field :movie_length, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.label :director %><br>
+		<%= f.text_field :director, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.label :rating %><br>
+		<%= f.text_field :rating, class: 'form-control' %>
+	</p>
+	<p>
+		<%= f.submit 'Submit', class: 'btn btn-primary' %>
+	</p>
+<% end %>
