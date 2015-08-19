@@ -28,18 +28,27 @@
               </tr>
             </tbody>
           </table>
-            <%= link_to "Write a Review", '#' %>
         </div>
       </div>
       <div class="col-md-7 col-md-offset-1">
         <h1><%= @movie.title %></h1>
+        <p>Average Rating: <span class="star-rating" data-score="<%= @avg_rating %>"></span></p>
         <p><%= @movie.description %></p>
-        <br>
+        
         
         <% if @reviews.any? %>
+        <%= link_to "Write a Review", new_movie_review_path(@movie), class: 'btn btn-default' %>
+        <br><br>
+          <h2>User reviews</h2>
             <% @reviews.each do |review| %>
               <div class="reviews">
-                <div class="star-rating" data-score="<%= review.rating %>"><%= review.comment %></div>
+                <div class="star-rating" data-score="<%= review.rating %>"></div>
+                <p><%= review.comment %></p>
+                <small>Submitted by <%= review.user.email %>
+                <% if review.user == current_user %>
+                  <%= link_to "Edit", edit_movie_review_path(@movie, review) %>
+                <% end %>
+                </small>
               </div>
             <% end %>
         <% else %>

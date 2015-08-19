@@ -22,6 +22,12 @@ class MoviesController < ApplicationController
 
 	def show
 		@reviews = Review.where(movie_id: @movie)
+
+		if @reviews.any?
+			@avg_rating = @reviews.average(:rating)
+		else
+			@avg_rating = 0
+		end
 	end
 
 	def update

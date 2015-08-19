@@ -16,6 +16,9 @@
 	<%= f.text_area :comment, class: 'form-control' %><br>
 
 	<%= f.submit "Submit", class: 'btn btn-default' %>
+	<%= link_to movie_path(@movie) do %>
+		<%= f.button "Back to Movie", class: 'btn btn-default' %>
+	<% end %>
 <% end %>
 
 <script>
