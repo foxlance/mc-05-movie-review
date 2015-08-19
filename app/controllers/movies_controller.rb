@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
 	end
 
 	def show
-		
+		@reviews = Review.where(movie_id: @movie)
 	end
 
 	def update

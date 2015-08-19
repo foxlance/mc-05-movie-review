@@ -34,6 +34,18 @@
       <div class="col-md-7 col-md-offset-1">
         <h1><%= @movie.title %></h1>
         <p><%= @movie.description %></p>
+        <br>
+        
+        <% if @reviews.any? %>
+            <% @reviews.each do |review| %>
+              <div class="reviews">
+                <div class="star-rating" data-score="<%= review.rating %>"><%= review.comment %></div>
+              </div>
+            <% end %>
+        <% else %>
+            <h4>No reviews submitted for this movie. <%= link_to "Create one now", new_movie_review_path(@movie) %>.</h4>
+        <% end %>
+
       </div>
     </div>
   </div>

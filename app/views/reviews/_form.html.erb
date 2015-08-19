@@ -1,0 +1,29 @@
+<%= form_for([@movie, @review]) do |f| %>
+
+	<% if @review.errors.any? %>
+		<%= pluralize(@review.errors.size, 'Error') %> prevented this form from saving.
+		<ul>
+			<% @review.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<%= f.label :rating %>
+	<div class="star-rating" data-score="<%= @review.rating %>"></div><br>
+
+	<%= f.label :comment %>
+	<%= f.text_area :comment, class: 'form-control' %><br>
+
+	<%= f.submit "Submit", class: 'btn btn-default' %>
+<% end %>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      scoreName: 'review[rating]',
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
