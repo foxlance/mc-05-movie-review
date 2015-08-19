@@ -20,6 +20,14 @@ class MoviesController < ApplicationController
 		end
 	end
 
+	def search
+		if params[:search].present?
+			@movies = Movie.search(params[:search]);
+		else
+			@movies = Movie.all.order('created_at DESC');
+		end
+	end
+
 	def show
 		@reviews = Review.where(movie_id: @movie)
 
